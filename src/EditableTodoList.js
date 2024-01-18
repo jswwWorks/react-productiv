@@ -15,7 +15,7 @@ function EditableTodoList({ todos, update, remove }) {
   return (
       <div>
         {/*   FIXME  */}
-        <EditableTodo />
+        <EditableTodo todo={todos[0]} update={update} remove={remove}/>
         <EditableTodo />
         <EditableTodo />
       </div>

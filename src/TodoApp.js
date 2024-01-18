@@ -44,7 +44,7 @@ function TodoApp({ initialTodos }) {
         <div className="row">
 
           <div className="col-md-6">
-            <EditableTodoList todos="" update={update} remove={remove} /> OR
+            <EditableTodoList todos={todos} update={update} remove={remove} /> OR
             <span className="text-muted">You have no todos.</span>
           </div>
 
@@ -54,7 +54,7 @@ function TodoApp({ initialTodos }) {
             // (if no top todo, omit this whole section)
               <section className="mb-4">
                 <h3>Top Todo</h3>
-                <TopTodo />
+                <TopTodo todos={todos} />
               </section>
             }
 

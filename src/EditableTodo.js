@@ -14,8 +14,13 @@ import TodoForm from "./TodoForm";
 
 function EditableTodo({ todo, update, remove }) {
 
+  //DO THIS WITH STATE
+  let mode="display";
+
   /** Toggle if this is being edited */
-  function toggleEdit() { }
+  function toggleEdit(evt) {
+    mode = "edit";
+  }
 
   /** Call remove fn passed to this. */
   function handleDelete() { }
@@ -23,30 +28,37 @@ function EditableTodo({ todo, update, remove }) {
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) { }
 
+
   return (
       <div className="EditableTodo">
 
-                EITHER
+                {mode === "edit" &&
+                  <TodoForm />
+                }
 
-                <TodoForm />
-
-                OR
-
-                <div className="mb-3">
-                  <div className="float-end text-sm-end">
-                    <button
-                        className="EditableTodo-toggle btn-link btn btn-sm"
-                        onClick={toggleEdit}>
-                      Edit
-                    </button>
-                    <button
-                        className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
-                        onClick={handleDelete}>
-                      Del
-                    </button>
+                {mode==="display" &&
+                  <div className="mb-3">
+                    <div className="float-end text-sm-end">
+                      <button
+                          className="EditableTodo-toggle btn-link btn btn-sm"
+                          onClick={toggleEdit}>
+                        Edit
+                      </button>
+                      <button
+                          className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+                          onClick={handleDelete}>
+                        Del
+                      </button>
+                    </div>
+                    <Todo
+                      id={todo.id}
+                      title={todo.title}
+                      description={todo.description}
+                      priority={todo.priority}
+                    />
                   </div>
-                  <Todo />
-                </div>
+                }
+
 
       </div>
   );
