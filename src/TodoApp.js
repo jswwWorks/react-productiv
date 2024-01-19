@@ -18,17 +18,21 @@ import TodoForm from "./TodoForm";
 
 function TodoApp({ initialTodos }) {
 
-  const [ todos, setTodos ] = useState(initialTodos)
+  const [ todos, setTodos ] = useState(initialTodos);
 
   /** add a new todo to list */
   function create(newTodo) {
+    console.log("this is the newTodo", newTodo);
    // newTodo.id = uuid();
 
-    newTodo = {...newTodo, id:uuid() }
-//    setTodos([...todos, newTodo]);
+    newTodo = {...newTodo, id:uuid() };
+    console.log('newTodo now should have an id', newTodo);
+
     setTodos(currTodos=> [...currTodos, newTodo]);
 
   }
+
+  console.log('after rerendering, there should be the todo', todos);
 
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
@@ -40,12 +44,12 @@ function TodoApp({ initialTodos }) {
   }
 
   /** save todo status */
-  function handleSave({formData}){
+  function handleSave(formData){
     if (formData?.id){
-      update(formData)
+      update(formData);
     }
     else{
-      create(formData)
+      create(formData);
     }
   }
 

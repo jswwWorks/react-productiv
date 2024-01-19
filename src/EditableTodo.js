@@ -19,6 +19,7 @@ import TodoForm from "./TodoForm";
 
 function EditableTodo({ todo, update, remove }) {
 
+  console.log('list each todo', todo);
   const [isEditing, setIsEditing] = useState(false);
 
   /** Toggle if this is being edited */

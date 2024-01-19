@@ -12,27 +12,18 @@ import React, { useState } from "react";
 
 function TodoForm({ initialFormData, handleSave }) {
 
-  console.log("INITIAL FORM DATA", initialFormData)
-
   //figure out if we have initial form data or not
   const [formData, setFormData] = useState(initialFormData);
 
-  console.log("STATE FORM DATA", formData)
   /** Update form input. */
   function handleChange(evt) {
-    // something about .name = value
-
     const{ name, value } = evt.target;
-
     setFormData(fData=>({...fData, [name] : value}));
-
-   }
+  }
 
   /** Call parent function and clear form. */
   function handleSubmit(evt) {
-
     handleSave(formData);
-
   }
 
   return (
