@@ -23,6 +23,7 @@ function TodoForm({ initialFormData, handleSave }) {
 
   /** Call parent function and clear form. */
   function handleSubmit(evt) {
+    evt.preventDefault();
     handleSave(formData);
   }
 

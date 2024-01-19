@@ -20,15 +20,24 @@ function TodoApp({ initialTodos }) {
 
   const [ todos, setTodos ] = useState(initialTodos);
 
+  // function dumbfunk(){
+  //   debugger;
+  // }
+
+ // debugger;
   /** add a new todo to list */
   function create(newTodo) {
-    console.log("this is the newTodo", newTodo);
+  //  console.log("this is the newTodo", newTodo);
    // newTodo.id = uuid();
+
+   //console.log("THIS IS INSIDE THE CREATE FUNCTION TODOS", todos)
 
     newTodo = {...newTodo, id:uuid() };
     console.log('newTodo now should have an id', newTodo);
 
     setTodos(currTodos=> [...currTodos, newTodo]);
+
+    //debugger;
 
   }
 
@@ -53,12 +62,14 @@ function TodoApp({ initialTodos }) {
     }
   }
 
+  // dumbfunk();
+
   return (
       <main className="TodoApp">
         <div className="row">
 
           <div className="col-md-6">
-            <EditableTodoList todos={todos} update={update} remove={remove} /> OR
+            <EditableTodoList todos={todos} update={update} remove={remove} />
             <span className="text-muted">You have no todos.</span>
           </div>
 
