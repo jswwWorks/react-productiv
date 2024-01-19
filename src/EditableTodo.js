@@ -29,10 +29,16 @@ function EditableTodo({ todo, update, remove }) {
   // TODO:setIsEditing(false) when someone submits form
 
   /** Call remove fn passed to this. */
-  function handleDelete() { }
+  function handleDelete() {
+    remove(todo.id);
+  }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
-  function handleSave(formData) { }
+  function handleSave(updatedTodo) {
+    // pass in updatedTodo
+    //TODO: TodoForm will send back data here
+    update(updatedTodo);
+  }
 
 
   return (
