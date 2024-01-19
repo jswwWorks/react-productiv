@@ -22,8 +22,12 @@ function TodoApp({ initialTodos }) {
 
   /** add a new todo to list */
   function create(newTodo) {
-    newTodo.id = uuid();
-    setTodos([...todos, newTodo])
+   // newTodo.id = uuid();
+
+    newTodo = {...newTodo, id:uuid() }
+//    setTodos([...todos, newTodo]);
+    setTodos(currTodos=> [...currTodos, newTodo]);
+
   }
 
   /** update a todo with updatedTodo */
@@ -61,7 +65,7 @@ function TodoApp({ initialTodos }) {
             <section>
               <h3 className="mb-3">Add Nü</h3>
               FIXME
-              < TodoForm initialFormData="" handleSave="" />
+              < TodoForm initialFormData="" handleSave={handleSave} />
             </section>
           </div>
 
