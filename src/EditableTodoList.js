@@ -29,7 +29,4 @@ function EditableTodoList({ todos, update, remove }) {
   );
 }
 
-// {/* FIXME
-// <EditableTodo todo={todos[0]} update={update} remove={remove}/> */}
-
 export default EditableTodoList;

@@ -19,8 +19,3 @@ function Todo({ id, title, description, priority}) {
 }
 
 export default Todo;
-
-// question for checkin: is it ok to have key warning because we're showing
-// the same exact item twice
-
-// or should we be assigning keys when we loop over and render all of the Todos?

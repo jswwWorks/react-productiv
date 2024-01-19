@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
 import TodoForm from "./TodoForm";
+import { updateSelectionOnFocus } from "@testing-library/user-event/dist/types/event/selection";
 
 /** App for managing a todo list.
  *
@@ -20,36 +21,29 @@ function TodoApp({ initialTodos }) {
 
   const [ todos, setTodos ] = useState(initialTodos);
 
-  // function dumbfunk(){
-  //   debugger;
-  // }
-
- // debugger;
   /** add a new todo to list */
   function create(newTodo) {
-  //  console.log("this is the newTodo", newTodo);
-   // newTodo.id = uuid();
-
-   //console.log("THIS IS INSIDE THE CREATE FUNCTION TODOS", todos)
 
     newTodo = {...newTodo, id:uuid() };
-    console.log('newTodo now should have an id', newTodo);
-
-    setTodos(currTodos=> [...currTodos, newTodo]);
-
-    //debugger;
-
+    setTodos(currTodos => [...currTodos, newTodo]);
   }
-
-  console.log('after rerendering, there should be the todo', todos);
 
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
+
+    // First, filters out the old version of that todo
+    setTodos(currTodos => currTodos.filter(
+      currTodo => currTodo.id !== updatedTodo.id
+    ));
+
+    // Replaces old version with updated information
+    setTodos(currTodos => [...currTodos, updatedTodo]);
+
   }
 
   /** delete a todo by id */
   function remove(id) {
-    setTodos(todos => todos.filter(todo => todo.id !== id ));
+    setTodos(currTodos => currTodos.filter(currTodo => currTodo.id !== id ));
   }
 
   /** save todo status */
@@ -61,8 +55,6 @@ function TodoApp({ initialTodos }) {
       create(formData);
     }
   }
-
-  // dumbfunk();
 
   return (
       <main className="TodoApp">

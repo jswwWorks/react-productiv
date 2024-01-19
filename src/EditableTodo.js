@@ -19,15 +19,12 @@ import TodoForm from "./TodoForm";
 
 function EditableTodo({ todo, update, remove }) {
 
-  console.log('list each todo', todo);
   const [isEditing, setIsEditing] = useState(false);
 
   /** Toggle if this is being edited */
   function toggleEdit() {
     setIsEditing(true);
   }
-
-  // TODO:setIsEditing(false) when someone submits form
 
   /** Call remove fn passed to this. */
   function handleDelete() {
@@ -36,8 +33,6 @@ function EditableTodo({ todo, update, remove }) {
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(updatedTodo) {
-    // pass in updatedTodo
-    //TODO: TodoForm will send back data here
     update(updatedTodo);
   }
 
@@ -48,9 +43,9 @@ function EditableTodo({ todo, update, remove }) {
                 {isEditing &&
                   < TodoForm
                   initialFormData={{
-                    title: 'none',
-                    description: 'none',
-                    priority: 3,
+                    title: todo.title,
+                    description: todo.description,
+                    priority: todo.priority,
                     id: todo.id
                   }}
                   handleSave={handleSave}
