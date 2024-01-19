@@ -14,12 +14,14 @@ import EditableTodo from "./EditableTodo";
 function EditableTodoList({ todos, update, remove }) {
   return (
       <div>
-        {/*   FIXME  */}
-        <EditableTodo todo={todos[0]} update={update} remove={remove}/>
-        <EditableTodo />
-        <EditableTodo />
+
+        {todos.map(todo => <EditableTodo todo={todo} update={update} remove={remove}/>)}
+
       </div>
   );
 }
+
+// {/* FIXME
+// <EditableTodo todo={todos[0]} update={update} remove={remove}/> */}
 
 export default EditableTodoList;

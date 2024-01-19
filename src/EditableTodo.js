@@ -9,18 +9,24 @@ import TodoForm from "./TodoForm";
  * - update(): fn to call to update a todo
  * - remove(): fn to call to remove a todo
  *
+ * State
+ * - isEditing (boolean)
+ *    if true: renders edit form
+ *    if false: renders normal todo list item
+ *
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
 function EditableTodo({ todo, update, remove }) {
 
-  //DO THIS WITH STATE
-  let mode="display";
+  const [isEditing, setIsEditing] = useState(false);
 
   /** Toggle if this is being edited */
-  function toggleEdit(evt) {
-    mode = "edit";
+  function toggleEdit() {
+    setIsEditing(true);
   }
+
+  // TODO:setIsEditing(false) when someone submits form
 
   /** Call remove fn passed to this. */
   function handleDelete() { }
@@ -32,11 +38,11 @@ function EditableTodo({ todo, update, remove }) {
   return (
       <div className="EditableTodo">
 
-                {mode === "edit" &&
+                {isEditing &&
                   <TodoForm />
                 }
 
-                {mode==="display" &&
+                {!isEditing &&
                   <div className="mb-3">
                     <div className="float-end text-sm-end">
                       <button

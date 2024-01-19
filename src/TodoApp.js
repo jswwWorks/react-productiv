@@ -22,7 +22,7 @@ function TodoApp({ initialTodos }) {
 
   /** add a new todo to list */
   function create(newTodo) {
-    //something like
+    newTodo.id = uuid();
     setTodos([...todos, newTodo])
   }
 

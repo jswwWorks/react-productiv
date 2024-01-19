@@ -9,8 +9,10 @@ import React from "react";
  **/
 
 function Todo({ id, title, description, priority}) {
+
+  console.log('this is a key', id);
   return (
-      <div className="Todo">
+      <div className="Todo" key={id}>
         <div><b>{title}</b> <small>(priority: {priority})</small></div>
         <div><small>{description}.</small></div>
       </div>
@@ -19,5 +21,7 @@ function Todo({ id, title, description, priority}) {
 
 export default Todo;
 
+// question for checkin: is it ok to have key warning because we're showing
+// the same exact item twice
 
-// why are we passing in the id?
+// or should we be assigning keys when we loop over and render all of the Todos?
