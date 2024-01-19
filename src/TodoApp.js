@@ -4,7 +4,6 @@ import { v4 as uuid } from "uuid";
 import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
 import TodoForm from "./TodoForm";
-import { updateSelectionOnFocus } from "@testing-library/user-event/dist/types/event/selection";
 
 /** App for managing a todo list.
  *
