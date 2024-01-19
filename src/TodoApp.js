@@ -49,11 +49,14 @@ function TodoApp({ initialTodos }) {
           </div>
 
           <div className="col-md-6">
-            (if no top todo, omit this whole section)
-            <section className="mb-4">
-              <h3>Top Todo</h3>
-              <TopTodo />
-            </section>
+
+            {(todos?.length > 0) &&
+            // (if no top todo, omit this whole section)
+              <section className="mb-4">
+                <h3>Top Todo</h3>
+                <TopTodo />
+              </section>
+            }
 
             <section>
               <h3 className="mb-3">Add Nü</h3>

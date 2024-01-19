@@ -18,3 +18,6 @@ function Todo({ id, title, description, priority}) {
 }
 
 export default Todo;
+
+
+// why are we passing in the id?
