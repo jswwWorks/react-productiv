@@ -45,7 +45,15 @@ function EditableTodo({ todo, update, remove }) {
       <div className="EditableTodo">
 
                 {isEditing &&
-                  <TodoForm />
+                  < TodoForm
+                  initialFormData={{
+                    title: 'none',
+                    description: 'none',
+                    priority: 3,
+                    id: todo.id
+                  }}
+                  handleSave={handleSave}
+                />
                 }
 
                 {!isEditing &&

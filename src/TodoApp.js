@@ -36,12 +36,17 @@ function TodoApp({ initialTodos }) {
 
   /** delete a todo by id */
   function remove(id) {
-    
+    setTodos(todos => todos.filter(todo => todo.id !== id ));
   }
 
   /** save todo status */
-  function handleSave(){
-
+  function handleSave({formData}){
+    if (formData?.id){
+      update(formData)
+    }
+    else{
+      create(formData)
+    }
   }
 
   return (
@@ -65,8 +70,14 @@ function TodoApp({ initialTodos }) {
 
             <section>
               <h3 className="mb-3">Add Nü</h3>
-              FIXME
-              < TodoForm initialFormData="" handleSave={handleSave} />
+              < TodoForm
+                initialFormData={{
+                  title: 'none',
+                  description: 'none',
+                  priority: 3
+                }}
+                handleSave={handleSave}
+              />
             </section>
           </div>
 
