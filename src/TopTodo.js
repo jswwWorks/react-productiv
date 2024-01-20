@@ -13,7 +13,7 @@ import Todo from "./Todo";
 function TopTodo({ todos }) {
 
   if (todos) {
-    let top = todos.reduce(
+    let top = todos.reduce( //const not let
       (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
 
     return <Todo

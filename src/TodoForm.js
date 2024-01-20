@@ -8,15 +8,17 @@ import React, { useState } from "react";
  * - handleSave: function to call in parent.
  *
  * { TodoApp, EditableTodo } -> TodoForm
+ * // list out form data state in docstring TODO:
  */
 
 function TodoForm({ initialFormData, handleSave }) {
 
   //figure out if we have initial form data or not
   const [formData, setFormData] = useState(initialFormData);
-
+  console.log("todo form has rendered, state:", formData);
   /** Update form input. */
   function handleChange(evt) {
+    //TODO: can handle string to num priority here
     const{ name, value } = evt.target;
     setFormData(fData=>({...fData, [name] : value}));
   }

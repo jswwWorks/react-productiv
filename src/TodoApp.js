@@ -18,12 +18,17 @@ import TodoForm from "./TodoForm";
 
 function TodoApp({ initialTodos }) {
 
-  const [ todos, setTodos ] = useState(initialTodos);
+  const [todos, setTodos] = useState(initialTodos);
+
+  debugger; // THIS IS WHEN WE FIRST LOAD
 
   /** add a new todo to list */
   function create(newTodo) {
 
-    newTodo = {...newTodo, id:uuid() };
+    debugger; // WE JUST GOT INTO THE CREATE FUNC
+    console.log("TODOS HERE", todos);
+
+    newTodo = { ...newTodo, id: uuid() };
     setTodos(currTodos => [...currTodos, newTodo]);
   }
 
@@ -42,53 +47,57 @@ function TodoApp({ initialTodos }) {
 
   /** delete a todo by id */
   function remove(id) {
-    setTodos(currTodos => currTodos.filter(currTodo => currTodo.id !== id ));
+    setTodos(currTodos => currTodos.filter(currTodo => currTodo.id !== id));
   }
 
   /** save todo status */
-  function handleSave(formData){
-    if (formData?.id){
+  // document id behavior in docstring
+  // this component doesn't know its coming from a form, can be todoData
+  // or the pieces of the data we need (destructured)
+  function handleSave(formData) {
+    if (formData.id) {
       update(formData);
     }
-    else{
+    else {
       create(formData);
     }
   }
 
+  //can pass create on 87 instead of handleSave
   return (
-      <main className="TodoApp">
-        <div className="row">
+    <main className="TodoApp">
+      <div className="row">
 
-          <div className="col-md-6">
-            <EditableTodoList todos={todos} update={update} remove={remove} />
-            <span className="text-muted">You have no todos.</span>
-          </div>
-
-          <div className="col-md-6">
-
-            {(todos?.length > 0) &&
-            // (if no top todo, omit this whole section)
-              <section className="mb-4">
-                <h3>Top Todo</h3>
-                <TopTodo todos={todos} />
-              </section>
-            }
-
-            <section>
-              <h3 className="mb-3">Add Nü</h3>
-              < TodoForm
-                initialFormData={{
-                  title: 'none',
-                  description: 'none',
-                  priority: 3
-                }}
-                handleSave={handleSave}
-              />
-            </section>
-          </div>
-
+        <div className="col-md-6">
+          <EditableTodoList todos={todos} update={update} remove={remove} />
+          <span className="text-muted">You have no todos.</span>
         </div>
-      </main>
+        <div className="col-md-6">
+
+          {(todos.length > 0) &&
+          //todos not existing here should be a real bug...
+            // (if no top todo, omit this whole section)
+            <section className="mb-4">
+              <h3>Top Todo</h3>
+              <TopTodo todos={todos} />
+            </section>
+          }
+
+          <section>
+            <h3 className="mb-3">Add Nü</h3>
+            < TodoForm
+              initialFormData={{
+                title: 'none',
+                description: 'none',
+                priority: 3
+              }}
+              handleSave={handleSave}
+            />
+          </section>
+        </div>
+
+      </div>
+    </main>
   );
 }
 
